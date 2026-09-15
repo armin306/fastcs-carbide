@@ -1,0 +1,16 @@
+# Changes here will be overwritten by Copier
+_commit: 5.4.0
+_src_path: gh:DiamondLightSource/python-copier-template
+author_email: armin306@icloud.com
+author_name: armin306
+description: FastCS IOC for the Light Conversion CARBIDE laser controller
+distribution_name: carbide-fastcs
+docker: true
+docs_type: README
+git_platform: github.com
+github_org: armin306
+package_name: carbide_fastcs
+pypi: false
+repo_name: carbide-fastcs
+strict_typing: true
+type_checker: pyright
