@@ -52,6 +52,20 @@ async def test_actual_state_name_unwraps_json_string(conn: CarbideConnection):
 
 
 @respx.mock
+async def test_actual_shutter_state_is_string(conn: CarbideConnection):
+    """The vendor API documents ActualShutterState as one of "Opened"/
+    "Closed" - a JSON string, not an int (caught by cross-referencing the
+    real DiamondLightSource/aithre production GUI, which compares against
+    those exact strings)."""
+    respx.get(f"{BASE_URL}/v1/Basic/ActualShutterState").mock(
+        return_value=httpx.Response(200, json="Closed")
+    )
+    value = await conn.actual_shutter_state()
+    assert value == "Closed"
+    assert isinstance(value, str)
+
+
+@respx.mock
 async def test_actual_attenuator_percentage_is_float(conn: CarbideConnection):
     respx.get(f"{BASE_URL}/v1/Basic/ActualAttenuatorPercentage").mock(
         return_value=httpx.Response(200, json=42.5)

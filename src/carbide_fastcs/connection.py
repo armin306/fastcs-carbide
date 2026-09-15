@@ -155,8 +155,8 @@ class CarbideConnection:
     async def actual_pp_divider(self) -> int:
         return await self._get_int("/v1/Basic/ActualPpDivider")
 
-    async def actual_shutter_state(self) -> int:
-        return await self._get_int("/v1/Basic/ActualShutterState")
+    async def actual_shutter_state(self) -> str:
+        return await self._get_str("/v1/Basic/ActualShutterState")
 
     async def actual_ra_frequency(self) -> float:
         return await self._get_float("/v1/Advanced/ActualRaFrequency")

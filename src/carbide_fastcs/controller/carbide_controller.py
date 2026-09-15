@@ -172,7 +172,7 @@ class CarbideBasicController(ConnectedSubController):
         Int(), group="ActualValues", handler=PollingHandler("actual_pp_divider", 2.0)
     )
     actual_shutter_state = AttrR(
-        Int(),
+        String(),
         group="ActualValues",
         handler=PollingHandler("actual_shutter_state", 2.0),
     )

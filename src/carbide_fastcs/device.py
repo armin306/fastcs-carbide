@@ -67,7 +67,7 @@ class CarbideBasicSettings(StandardReadable):
             )
             self.actual_pp_divider = epics_signal_r(int, prefix + "ActualPpDivider")
             self.actual_shutter_state = epics_signal_r(
-                int, prefix + "ActualShutterState"
+                str, prefix + "ActualShutterState"
             )
             self.actual_ra_frequency = epics_signal_r(
                 float, prefix + "ActualRaFrequency"
