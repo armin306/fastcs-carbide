@@ -60,7 +60,12 @@ addopts = """
     --tb=native -vv
     """
 # https://iscinumpy.gitlab.io/post/bound-version-constraints/#watch-for-warnings
-filterwarnings = "error"
+filterwarnings = [
+    "error",
+    # fastcs 0.8.0 (our pin) calls the now-deprecated asyncio.iscoroutinefunction;
+    # only Python 3.14+ warns about it. No later 0.8.x release exists to bump to.
+    "ignore:'asyncio.iscoroutinefunction' is deprecated:DeprecationWarning",
+]
 # Doctest python code in docs, python code in src docstrings, test functions in tests
 testpaths = "docs src tests"
 asyncio_mode = "auto"
