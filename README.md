@@ -5,10 +5,10 @@
 
 # carbide_fastcs
 
-FastCS IOC for the Light Conversion CARBIDE laser controller
-
-This is where you should write a short paragraph that describes what your module does,
-how it does it, and why people should use it.
+FastCS IOC for the Light Conversion CARBIDE laser controller, part of the
+Aithre (Diamond Light Source I23 laser-shaping lab) control software.
+Mirrors [rtc6-fastcs](https://github.com/DiamondLightSource/rtc6-fastcs)'s
+shape and conventions - see that repo for the equivalent RTC6 scan-head IOC.
 
 What            | Where
 :---:           | :---:
@@ -16,18 +16,25 @@ Source          | <https://github.com/armin306/carbide-fastcs>
 Docker          | `docker run ghcr.io/armin306/carbide-fastcs:latest`
 Releases        | <https://github.com/armin306/carbide-fastcs/releases>
 
-This is where you should put some images or code snippets that illustrate
-some relevant examples. If it is a library then you might put some
-introductory code here:
+Talks to the CARBIDE Supervisor REST API over HTTP and exposes it as an
+EPICS IOC (via [FastCS](https://github.com/DiamondLightSource/FastCS)),
+with an [ophyd-async](https://github.com/bluesky/ophyd-async) device and
+Bluesky plan stubs on top for eventual use from `dodal`/`mx-bluesky` - not
+yet wired into either; see [aithre_lasercontrols](https://github.com/co2e14/aithre_lasercontrols)'s
+`docs/WAY_FORWARD.md` and `docs/CARBIDE_FASTCS_DESIGN.md` for the plan this
+was built from, and `laserControl.py` in that repo for the original
+(pre-FastCS) prototype this ports.
+
+Start the IOC:
+
+```
+carbide-fastcs ioc CARBIDE http://192.168.240.10:20010
+```
+
+Or as a library:
 
 ```python
 from carbide_fastcs import __version__
 
 print(f"Hello carbide_fastcs {__version__}")
-```
-
-Or if it is a commandline tool then you might put some example commands here:
-
-```
-python -m carbide_fastcs --version
 ```

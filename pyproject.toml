@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 description = "FastCS IOC for the Light Conversion CARBIDE laser controller"
-dependencies = [] # Add project dependencies here, e.g. ["click", "numpy"]
+dependencies = ["fastcs~=0.8.0", "httpx"]
 dynamic = ["version"]
 license.file = "LICENSE"
 readme = "README.md"
@@ -21,17 +21,21 @@ requires-python = ">=3.11"
 
 [dependency-groups]
 dev = [
+    "bluesky",
+    "ophyd-async",
     "pre-commit",
     "pyright",
     "pytest",
+    "pytest-asyncio",
     "pytest-cov",
+    "respx",
     "ruff",
     "tox-uv",
     "types-mock",
 ]
 
 [project.scripts]
-carbide-fastcs = "carbide_fastcs.__main__:main"
+carbide-fastcs = "carbide_fastcs.__main__:app"
 
 [project.urls]
 GitHub = "https://github.com/armin306/carbide-fastcs"
@@ -44,7 +48,10 @@ name = "armin306"
 version_file = "src/carbide_fastcs/_version.py"
 
 [tool.pyright]
-typeCheckingMode = "strict"
+# standard, not strict: matches rtc6-fastcs's own choice, made for the same
+# reason - fastcs/bluesky/ophyd-async don't ship complete type stubs, so
+# strict mode is mostly noise from that rather than real bugs here.
+typeCheckingMode = "standard"
 reportMissingImports = false # Ignore missing stubs in imported modules
 
 [tool.pytest.ini_options]
@@ -56,6 +63,7 @@ addopts = """
 filterwarnings = "error"
 # Doctest python code in docs, python code in src docstrings, test functions in tests
 testpaths = "docs src tests"
+asyncio_mode = "auto"
 
 [tool.coverage.run]
 patch = ["subprocess"]

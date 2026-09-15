@@ -12,5 +12,5 @@ github_org: armin306
 package_name: carbide_fastcs
 pypi: false
 repo_name: carbide-fastcs
-strict_typing: true
+strict_typing: false
 type_checker: pyright
