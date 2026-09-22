@@ -1,4 +1,4 @@
-"""Interface for ``python -m carbide_fastcs``."""
+"""Interface for ``python -m fastcs_carbide``."""
 
 from functools import cache
 from pathlib import Path
@@ -8,8 +8,8 @@ import typer
 from fastcs.launch import FastCS
 from fastcs.transport.epics.options import EpicsIOCOptions, EpicsOptions
 
-from carbide_fastcs.connection import DEFAULT_BASE_URL
-from carbide_fastcs.controller import CarbideController
+from fastcs_carbide.connection import DEFAULT_BASE_URL
+from fastcs_carbide.controller import CarbideController
 
 from . import __version__
 

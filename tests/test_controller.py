@@ -2,7 +2,7 @@ import httpx
 import pytest
 import respx
 
-from carbide_fastcs.controller.carbide_controller import CarbideController
+from fastcs_carbide.controller.carbide_controller import CarbideController
 
 BASE_URL = "http://192.168.240.10:20010"
 

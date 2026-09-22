@@ -2,7 +2,7 @@ import httpx
 import pytest
 import respx
 
-from carbide_fastcs.connection import CarbideConnection
+from fastcs_carbide.connection import CarbideConnection
 
 BASE_URL = "http://192.168.240.10:20010"
 

@@ -1,9 +1,9 @@
-[![CI](https://github.com/armin306/carbide-fastcs/actions/workflows/ci.yml/badge.svg)](https://github.com/armin306/carbide-fastcs/actions/workflows/ci.yml)
-[![Coverage](https://codecov.io/gh/armin306/carbide-fastcs/branch/main/graph/badge.svg)](https://codecov.io/gh/armin306/carbide-fastcs)
+[![CI](https://github.com/armin306/fastcs-carbide/actions/workflows/ci.yml/badge.svg)](https://github.com/armin306/fastcs-carbide/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/armin306/fastcs-carbide/branch/main/graph/badge.svg)](https://codecov.io/gh/armin306/fastcs-carbide)
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-# carbide_fastcs
+# fastcs_carbide
 
 FastCS IOC for the Light Conversion CARBIDE laser controller, part of the
 Aithre (Diamond Light Source I23 laser-shaping lab) control software.
@@ -12,9 +12,9 @@ shape and conventions - see that repo for the equivalent RTC6 scan-head IOC.
 
 What            | Where
 :---:           | :---:
-Source          | <https://github.com/armin306/carbide-fastcs>
-Docker          | `docker run ghcr.io/armin306/carbide-fastcs:latest`
-Releases        | <https://github.com/armin306/carbide-fastcs/releases>
+Source          | <https://github.com/armin306/fastcs-carbide>
+Docker          | `docker run ghcr.io/armin306/fastcs-carbide:latest`
+Releases        | <https://github.com/armin306/fastcs-carbide/releases>
 
 Talks to the CARBIDE Supervisor REST API over HTTP and exposes it as an
 EPICS IOC (via [FastCS](https://github.com/DiamondLightSource/FastCS)),
@@ -28,13 +28,13 @@ was built from, and `laserControl.py` in that repo for the original
 Start the IOC:
 
 ```
-carbide-fastcs ioc CARBIDE http://192.168.240.10:20010
+fastcs-carbide ioc CARBIDE http://192.168.240.10:20010
 ```
 
 Or as a library:
 
 ```python
-from carbide_fastcs import __version__
+from fastcs_carbide import __version__
 
-print(f"Hello carbide_fastcs {__version__}")
+print(f"Hello fastcs_carbide {__version__}")
 ```

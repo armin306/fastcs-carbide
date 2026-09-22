@@ -98,50 +98,6 @@ wheels = [
 ]
 
 [[package]]
-name = "carbide-fastcs"
-source = { editable = "." }
-dependencies = [
-    { name = "fastcs" },
-    { name = "httpx" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "bluesky" },
-    { name = "ophyd-async" },
-    { name = "pre-commit" },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "pytest-cov" },
-    { name = "respx" },
-    { name = "ruff" },
-    { name = "tox-uv" },
-    { name = "types-mock" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "fastcs", specifier = "~=0.8.0" },
-    { name = "httpx" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "bluesky" },
-    { name = "ophyd-async" },
-    { name = "pre-commit" },
-    { name = "pyright" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "pytest-cov" },
-    { name = "respx" },
-    { name = "ruff" },
-    { name = "tox-uv" },
-    { name = "types-mock" },
-]
-
-[[package]]
 name = "certifi"
 version = "2026.7.22"
 source = { registry = "https://pypi.org/simple" }
@@ -665,6 +621,50 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/44/7d/9da4aeb1326510dfd593fecea1626e2fb42a145579c609971f277b1b169c/fastcs-0.8.0.tar.gz", hash = "sha256:6bfb46953a0eb18b588f71c89eb2991545ad1eec2491c29efb958e947c666cda", size = 59874, upload-time = "2024-12-19T11:25:55.48Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/24/40/9b50a78f0c9f80e49d5b1f0d889113a012dfbfc8291ea3c3159ec27138d1/fastcs-0.8.0-py3-none-any.whl", hash = "sha256:d3ec2e28940c1a7fe0601e68d120b6720c22a2ee0405fb3549e39f427e9b7b9b", size = 38128, upload-time = "2024-12-19T11:25:53.222Z" },
+]
+
+[[package]]
+name = "fastcs-carbide"
+source = { editable = "." }
+dependencies = [
+    { name = "fastcs" },
+    { name = "httpx" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "bluesky" },
+    { name = "ophyd-async" },
+    { name = "pre-commit" },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+    { name = "pytest-cov" },
+    { name = "respx" },
+    { name = "ruff" },
+    { name = "tox-uv" },
+    { name = "types-mock" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastcs", specifier = "~=0.8.0" },
+    { name = "httpx" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "bluesky" },
+    { name = "ophyd-async" },
+    { name = "pre-commit" },
+    { name = "pyright" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+    { name = "pytest-cov" },
+    { name = "respx" },
+    { name = "ruff" },
+    { name = "tox-uv" },
+    { name = "types-mock" },
 ]
 
 [[package]]

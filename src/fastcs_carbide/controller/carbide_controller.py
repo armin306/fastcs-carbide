@@ -11,7 +11,7 @@ from fastcs.controller import Controller, SubController
 from fastcs.datatypes import Bool, Float, Int, String
 from fastcs.wrappers import command
 
-from carbide_fastcs.connection import DEFAULT_BASE_URL, CarbideConnection
+from fastcs_carbide.connection import DEFAULT_BASE_URL, CarbideConnection
 
 LOGGER = logging.getLogger(__name__)
 

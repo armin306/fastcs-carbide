@@ -4,13 +4,13 @@ _src_path: gh:DiamondLightSource/python-copier-template
 author_email: armin306@icloud.com
 author_name: armin306
 description: FastCS IOC for the Light Conversion CARBIDE laser controller
-distribution_name: carbide-fastcs
+distribution_name: fastcs-carbide
 docker: true
 docs_type: README
 git_platform: github.com
 github_org: armin306
-package_name: carbide_fastcs
+package_name: fastcs_carbide
 pypi: false
-repo_name: carbide-fastcs
+repo_name: fastcs-carbide
 strict_typing: false
 type_checker: pyright

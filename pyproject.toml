@@ -3,7 +3,7 @@ requires = ["setuptools>=64", "setuptools_scm[toml]>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "carbide-fastcs"
+name = "fastcs-carbide"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "License :: OSI Approved :: Apache Software License",
@@ -35,17 +35,17 @@ dev = [
 ]
 
 [project.scripts]
-carbide-fastcs = "carbide_fastcs.__main__:app"
+fastcs-carbide = "fastcs_carbide.__main__:app"
 
 [project.urls]
-GitHub = "https://github.com/armin306/carbide-fastcs"
+GitHub = "https://github.com/armin306/fastcs-carbide"
 
 [[project.authors]] # Further authors may be added by duplicating this section
 email = "armin306@icloud.com"
 name = "armin306"
 
 [tool.setuptools_scm]
-version_file = "src/carbide_fastcs/_version.py"
+version_file = "src/fastcs_carbide/_version.py"
 
 [tool.pyright]
 # standard, not strict: matches rtc6-fastcs's own choice, made for the same
@@ -72,7 +72,7 @@ asyncio_mode = "auto"
 
 [tool.coverage.run]
 patch = ["subprocess"]
-data_file = "/tmp/carbide_fastcs.coverage"
+data_file = "/tmp/fastcs_carbide.coverage"
 
 [tool.coverage.paths]
 # Tests are run from installed location, map back to the src directory
@@ -119,7 +119,7 @@ description = "Run tests with coverage"
 commands = [
     [
         "pytest",
-        "--cov=carbide_fastcs",
+        "--cov=fastcs_carbide",
         "--cov-report",
         "term",
         "--cov-report",

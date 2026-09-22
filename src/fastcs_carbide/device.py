@@ -1,4 +1,4 @@
-"""ophyd-async device wrapping the ``carbide-fastcs`` IOC's EPICS PVs.
+"""ophyd-async device wrapping the ``fastcs-carbide`` IOC's EPICS PVs.
 
 Mirrors ``rtc6_fastcs.device.Rtc6Eth``'s shape closely - one ``StandardReadable``
 sub-device per PV sub-namespace, an outer device composing them with a

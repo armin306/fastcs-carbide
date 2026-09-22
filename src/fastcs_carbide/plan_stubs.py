@@ -12,7 +12,7 @@ Not yet consumed by any ``mx-bluesky`` plan - see ``aithre_lasercontrols``'s
 
 import bluesky.plan_stubs as bps
 
-from carbide_fastcs.device import CarbideLaser
+from fastcs_carbide.device import CarbideLaser
 
 
 def apply_preset_and_enable(carbide: CarbideLaser, preset_index: int):
