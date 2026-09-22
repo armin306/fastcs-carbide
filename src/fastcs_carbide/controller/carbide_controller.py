@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import enum
 import logging
 from dataclasses import dataclass
 from typing import Any
@@ -8,12 +9,32 @@ from typing import Any
 import httpx
 from fastcs.attributes import AttributeIO, AttributeIORef, AttrR, AttrRW, AttrW
 from fastcs.controllers import Controller
-from fastcs.datatypes import Bool, Float, Int, String
+from fastcs.datatypes import Bool, Enum, Float, Int, String
 from fastcs.methods import command
 
 from fastcs_carbide.connection import DEFAULT_BASE_URL, CarbideConnection
 
 LOGGER = logging.getLogger(__name__)
+
+
+class OutputState(enum.StrEnum):
+    """Display labels for ``is_output_enabled`` - member *names* (not
+    values) become the mbbi record's EPICS state strings, so these stand
+    in for the old ``Bool(znam=..., onam=...)`` labels that fastcs 0.14
+    dropped support for."""
+
+    Closed = "Closed"
+    Enabled = "Enabled"
+
+
+class InterlockState(enum.StrEnum):
+    """Display labels for ``is_remote_interlock_active``. "NotArmed" (no
+    space) is the closest achievable match to the old znam="Not armed" -
+    EPICS state strings come from the enum member's identifier, which
+    can't contain a space."""
+
+    NotArmed = "Not armed"
+    Armed = "Armed"
 
 
 @dataclass
@@ -48,6 +69,12 @@ class CarbideAttributeIO(AttributeIO[Any, CarbideIORef]):
         except httpx.HTTPError as exc:
             LOGGER.warning("Poll of %s failed: %s", method, exc)
             return
+        if isinstance(attr.datatype, Enum) and isinstance(value, bool):
+            # CarbideConnection returns plain bool; map it onto the
+            # attribute's 2-member enum (index 0 = False, 1 = True) so
+            # attributes can use Enum for EPICS state labels without the
+            # REST layer knowing anything about it.
+            value = attr.datatype.members[int(value)]
         await attr.update(value)
 
     async def send(self, attr: AttrW[Any, CarbideIORef], value: Any) -> None:
@@ -86,7 +113,7 @@ class CarbideStatusController(ConnectedSubController):
         io_ref=CarbideIORef(get_method="actual_state_name", update_period=1.0),
     )
     is_output_enabled = AttrR(
-        Bool(),
+        Enum(OutputState),
         group="Status",
         io_ref=CarbideIORef(get_method="is_output_enabled", update_period=1.0),
     )
@@ -223,7 +250,7 @@ class CarbideBasicController(ConnectedSubController):
 
 class CarbideAdvancedController(ConnectedSubController):
     is_remote_interlock_active = AttrR(
-        Bool(),
+        Enum(InterlockState),
         group="Interlock",
         io_ref=CarbideIORef(get_method="is_remote_interlock_active", update_period=1.0),
     )

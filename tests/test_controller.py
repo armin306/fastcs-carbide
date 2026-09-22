@@ -5,6 +5,7 @@ import respx
 from fastcs_carbide.controller.carbide_controller import (
     CarbideController,
     CarbideControllerOptions,
+    OutputState,
 )
 
 BASE_URL = "http://192.168.240.10:20010"
@@ -96,3 +97,18 @@ async def test_attribute_io_survives_http_error(controller: CarbideController):
     status_controller = controller.status
     attr = status_controller.actual_state_name
     await status_controller.io.update(attr)  # should not raise
+
+
+@respx.mock
+async def test_attribute_io_converts_bool_to_enum(controller: CarbideController):
+    """is_output_enabled's CarbideConnection getter returns a plain bool -
+    the IO layer must map it onto OutputState (index 0/1 = False/True) for
+    the attribute's Enum datatype, since fastcs 0.14 dropped Bool's
+    znam/onam EPICS state labels."""
+    respx.get(f"{BASE_URL}/v1/Basic/IsOutputEnabled").mock(
+        return_value=httpx.Response(200, json=True)
+    )
+    status_controller = controller.status
+    attr = status_controller.is_output_enabled
+    await status_controller.io.update(attr)
+    assert attr.get() == OutputState.Enabled
