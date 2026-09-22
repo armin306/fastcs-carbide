@@ -25,10 +25,20 @@ yet wired into either; see [aithre_lasercontrols](https://github.com/co2e14/aith
 was built from, and `laserControl.py` in that repo for the original
 (pre-FastCS) prototype this ports.
 
-Start the IOC:
+Start the IOC from a `fastcs.yaml` config file (see `fastcs.yaml` in this
+repo for a working example):
+
+```yaml
+controllers:
+  - id: LA18L-EA-CARB-01
+    type: fastcs_carbide.CarbideController
+    base_url: http://192.168.240.10:20010
+transport:
+  - epicsca: {}
+```
 
 ```
-fastcs-carbide ioc LA18L-EA-CARB-01 http://192.168.240.10:20010
+fastcs-carbide run fastcs.yaml
 ```
 
 Or as a library:

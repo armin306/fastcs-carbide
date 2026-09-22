@@ -2,14 +2,17 @@ import httpx
 import pytest
 import respx
 
-from fastcs_carbide.controller.carbide_controller import CarbideController
+from fastcs_carbide.controller.carbide_controller import (
+    CarbideController,
+    CarbideControllerOptions,
+)
 
 BASE_URL = "http://192.168.240.10:20010"
 
 
 @pytest.fixture
 async def controller():
-    ctrl = CarbideController(BASE_URL)
+    ctrl = CarbideController(CarbideControllerOptions(base_url=BASE_URL))
     yield ctrl
     await ctrl.close()
 
@@ -70,23 +73,21 @@ async def test_connect_populates_info(controller: CarbideController):
 
 
 @respx.mock
-async def test_polling_handler_updates_attribute(controller: CarbideController):
-    """One representative PollingHandler-backed AttrR, to check the
-    handler/attribute wiring actually works end to end, not just that the
-    connection method it delegates to works (covered in test_connection.py)."""
+async def test_attribute_io_updates_attribute(controller: CarbideController):
+    """One representative AttrR, to check the CarbideAttributeIO/attribute
+    wiring actually works end to end, not just that the connection method
+    it delegates to works (covered in test_connection.py)."""
     respx.get(f"{BASE_URL}/v1/Basic/ActualStateName").mock(
         return_value=httpx.Response(200, json="Operational")
     )
     status_controller = controller.status
     attr = status_controller.actual_state_name
-    handler = attr.updater
-    assert handler is not None
-    await handler.update(status_controller, attr)
+    await status_controller.io.update(attr)
     assert attr.get() == "Operational"
 
 
 @respx.mock
-async def test_polling_handler_survives_http_error(controller: CarbideController):
+async def test_attribute_io_survives_http_error(controller: CarbideController):
     """A failed poll should be logged and skipped, not raised - a
     transient network error shouldn't crash the IOC's scan loop."""
     respx.get(f"{BASE_URL}/v1/Basic/ActualStateName").mock(
@@ -94,6 +95,4 @@ async def test_polling_handler_survives_http_error(controller: CarbideController
     )
     status_controller = controller.status
     attr = status_controller.actual_state_name
-    handler = attr.updater
-    assert handler is not None
-    await handler.update(status_controller, attr)  # should not raise
+    await status_controller.io.update(attr)  # should not raise
