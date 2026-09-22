@@ -49,7 +49,9 @@ def create_ui_and_docs(
 
 @app.command()
 def ioc(
-    pv_prefix: Annotated[str, typer.Argument(help="Name of the IOC")] = "CARBIDE",
+    pv_prefix: Annotated[
+        str, typer.Argument(help="Name of the IOC")
+    ] = "LA18L-EA-CARB-01",
     base_url: Annotated[
         str, typer.Argument(help="Base URL of the CARBIDE Supervisor REST API")
     ] = DEFAULT_BASE_URL,

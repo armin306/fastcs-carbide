@@ -28,7 +28,7 @@ was built from, and `laserControl.py` in that repo for the original
 Start the IOC:
 
 ```
-fastcs-carbide ioc CARBIDE http://192.168.240.10:20010
+fastcs-carbide ioc LA18L-EA-CARB-01 http://192.168.240.10:20010
 ```
 
 Or as a library:
