@@ -1,6 +1,6 @@
 controllers:
   - id: LA18L-EA-CARB-01
     type: fastcs_carbide.CarbideController
-    base_url: http://192.168.240.10:20010
+    base_url: http://172.23.171.207:20010
 transport:
   - epicsca: {}
