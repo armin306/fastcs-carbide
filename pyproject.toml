@@ -60,7 +60,14 @@ addopts = """
     --tb=native -vv
     """
 # https://iscinumpy.gitlab.io/post/bound-version-constraints/#watch-for-warnings
-filterwarnings = ["error"]
+filterwarnings = [
+    "error",
+    # fastcs 0.14.2 (our pin, still latest on PyPI) calls the now-deprecated
+    # asyncio.iscoroutinefunction in methods/method.py; only Python 3.14+
+    # warns about it. Re-check whether this is fixed upstream on the next
+    # fastcs bump.
+    "ignore:'asyncio.iscoroutinefunction' is deprecated:DeprecationWarning",
+]
 # Doctest python code in docs, python code in src docstrings, test functions in tests
 testpaths = "docs src tests"
 asyncio_mode = "auto"
