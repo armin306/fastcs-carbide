@@ -1,6 +1,6 @@
 """ophyd-async device wrapping the ``fastcs-carbide`` IOC's EPICS PVs.
 
-Mirrors ``rtc6_fastcs.device.Rtc6Eth``'s shape closely - one ``StandardReadable``
+Mirrors ``fastcs_rtc6.device.Rtc6Eth``'s shape closely - one ``StandardReadable``
 sub-device per PV sub-namespace, an outer device composing them with a
 ``stage``/``trigger``/``unstage`` lifecycle. Not yet wired into ``dodal`` (see
 ``aithre_lasercontrols``'s ``WAY_FORWARD.md`` - that's the next step, not this

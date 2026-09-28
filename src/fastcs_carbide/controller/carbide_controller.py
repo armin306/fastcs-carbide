@@ -93,7 +93,7 @@ class ConnectedSubController(Controller):
 
 class CarbideInfoController(ConnectedSubController):
     """Identity fields that never change once connected - populated once at
-    connect time rather than polled, matching rtc6-fastcs's
+    connect time rather than polled, matching fastcs-rtc6's
     ``proc_cardinfo`` pattern."""
 
     laser_identification_number = AttrR(String(), group="Info")

@@ -48,7 +48,7 @@ name = "armin306"
 version_file = "src/fastcs_carbide/_version.py"
 
 [tool.pyright]
-# standard, not strict: matches rtc6-fastcs's own choice, made for the same
+# standard, not strict: matches fastcs-rtc6's own choice, made for the same
 # reason - fastcs/bluesky/ophyd-async don't ship complete type stubs, so
 # strict mode is mostly noise from that rather than real bugs here.
 typeCheckingMode = "standard"

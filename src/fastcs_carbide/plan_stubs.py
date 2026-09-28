@@ -3,8 +3,8 @@
 Unlike RTC6's jump/line/arc command-list plans, Carbide has no scan-head-style
 command sequence - just settable parameters and discrete actions - so these
 are small, named plans rather than geometry builders, closer to
-``rtc6_fastcs.cut_shapes``'s domain-specific helpers than to
-``rtc6_fastcs.plan_stubs``'s ``jump``/``line``/``arc``.
+``fastcs_rtc6.cut_shapes``'s domain-specific helpers than to
+``fastcs_rtc6.plan_stubs``'s ``jump``/``line``/``arc``.
 
 Not yet consumed by any ``mx-bluesky`` plan - see ``aithre_lasercontrols``'s
 ``WAY_FORWARD.md``.

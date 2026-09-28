@@ -7,7 +7,7 @@
 
 FastCS IOC for the Light Conversion CARBIDE laser controller, part of the
 Aithre (Diamond Light Source I23 laser-shaping lab) control software.
-Mirrors [rtc6-fastcs](https://github.com/DiamondLightSource/rtc6-fastcs)'s
+Mirrors [fastcs-rtc6](https://github.com/armin306/fastcs-rtc6)'s
 shape and conventions - see that repo for the equivalent RTC6 scan-head IOC.
 
 What            | Where
