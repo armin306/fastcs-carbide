@@ -119,6 +119,27 @@ async def test_reduce_leak_sends_post_to_advanced_endpoint(conn: CarbideConnecti
 
 
 @respx.mock
+async def test_target_ra_frequency_uses_advanced_endpoint(conn: CarbideConnection):
+    """TargetRaFrequency lives under /v1/Advanced/, not /v1/Basic/ - confirmed
+    against real hardware (172.23.171.207), which 404s "There is no such
+    endpoint" for the /v1/Basic/ path the original laserControl.py port used."""
+    route = respx.get(f"{BASE_URL}/v1/Advanced/TargetRaFrequency").mock(
+        return_value=httpx.Response(200, json=60.0)
+    )
+    assert await conn.target_ra_frequency() == 60.0
+    assert route.called
+
+
+@respx.mock
+async def test_set_target_ra_frequency_uses_advanced_endpoint(conn: CarbideConnection):
+    route = respx.put(f"{BASE_URL}/v1/Advanced/TargetRaFrequency").mock(
+        return_value=httpx.Response(200)
+    )
+    await conn.set_target_ra_frequency(60.0)
+    assert route.called
+
+
+@respx.mock
 async def test_set_aom_trigger_source_sends_string_body(conn: CarbideConnection):
     route = respx.put(f"{BASE_URL}/v1/ExternalControl/AomTriggerSource").mock(
         return_value=httpx.Response(200)

@@ -185,10 +185,10 @@ class CarbideConnection:
         await self._put("/v1/Basic/TargetPpDivider", divider)
 
     async def target_ra_frequency(self) -> float:
-        return await self._get_float("/v1/Basic/TargetRaFrequency")
+        return await self._get_float("/v1/Advanced/TargetRaFrequency")
 
     async def set_target_ra_frequency(self, frequency: float) -> None:
-        await self._put("/v1/Basic/TargetRaFrequency", frequency)
+        await self._put("/v1/Advanced/TargetRaFrequency", frequency)
 
     # --- Interlock / pulse picker / powerlock ------------------------------
 
