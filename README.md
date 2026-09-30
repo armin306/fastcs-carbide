@@ -20,10 +20,12 @@ Talks to the CARBIDE Supervisor REST API over HTTP and exposes it as an
 EPICS IOC (via [FastCS](https://github.com/DiamondLightSource/FastCS)),
 with an [ophyd-async](https://github.com/bluesky/ophyd-async) device and
 Bluesky plan stubs on top for eventual use from `dodal`/`mx-bluesky` - not
-yet wired into either; see [aithre_lasercontrols](https://github.com/co2e14/aithre_lasercontrols)'s
-`docs/WAY_FORWARD.md` and `docs/CARBIDE_FASTCS_DESIGN.md` for the plan this
-was built from, and `laserControl.py` in that repo for the original
-(pre-FastCS) prototype this ports.
+yet wired into either; see
+[armin306/aithre](https://github.com/armin306/aithre/blob/docs/functional-spec/docs/FUNCTIONAL_SPEC.md)'s
+`docs/FUNCTIONAL_SPEC.md` (`docs/functional-spec` branch) for the plan this
+was built from, and `bin/laserControl.py` in
+[DiamondLightSource/aithre](https://github.com/DiamondLightSource/aithre) for
+the original (pre-FastCS) prototype this ports.
 
 Start the IOC from a `fastcs.yaml` config file (see `fastcs.yaml` in this
 repo for a working example):

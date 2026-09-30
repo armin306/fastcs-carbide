@@ -1,9 +1,9 @@
 """Async wrapper around the Light Conversion CARBIDE Supervisor REST API.
 
-Ported from the original ``laserControl.py``'s ``carbide`` class in the
-``aithre_lasercontrols`` repo (see that repo's ``docs/CARBIDE_FASTCS_DESIGN.md``
-for the full endpoint-by-endpoint mapping this is based on). Two deliberate
-differences from the original:
+Ported from the original ``laserControl.py``'s ``carbide`` class in
+``DiamondLightSource/aithre``'s ``bin/laserControl.py`` (the source of the
+endpoint-by-endpoint mapping this is based on). Two deliberate differences
+from the original:
 
 - Uses ``httpx.AsyncClient`` rather than synchronous ``requests`` calls,
   since FastCS attribute handlers are async and some of these calls (notably
@@ -232,7 +232,6 @@ class CarbideConnection:
 
         Confirmed unused operationally at Aithre (Chris Orr, 2026-09-15) -
         kept here for API completeness only. Don't build anything on top of
-        this without checking with Chris/Photonics first (see
-        ``aithre_lasercontrols``'s ``QUESTIONS_FOR_CHRIS.md`` #1).
+        this without checking with Chris/Photonics first.
         """
         await self._post("/v1/Advanced/ReduceLeak")

@@ -6,8 +6,8 @@ are small, named plans rather than geometry builders, closer to
 ``fastcs_rtc6.cut_shapes``'s domain-specific helpers than to
 ``fastcs_rtc6.plan_stubs``'s ``jump``/``line``/``arc``.
 
-Not yet consumed by any ``mx-bluesky`` plan - see ``aithre_lasercontrols``'s
-``WAY_FORWARD.md``.
+Not yet consumed by any ``mx-bluesky`` plan - see ``armin306/aithre``'s
+``docs/FUNCTIONAL_SPEC.md`` on the ``docs/functional-spec`` branch.
 """
 
 import bluesky.plan_stubs as bps

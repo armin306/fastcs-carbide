@@ -3,8 +3,8 @@
 Mirrors ``fastcs_rtc6.device.Rtc6Eth``'s shape closely - one ``StandardReadable``
 sub-device per PV sub-namespace, an outer device composing them with a
 ``stage``/``trigger``/``unstage`` lifecycle. Not yet wired into ``dodal`` (see
-``aithre_lasercontrols``'s ``WAY_FORWARD.md`` - that's the next step, not this
-one), but built ready for it.
+``armin306/aithre``'s ``docs/FUNCTIONAL_SPEC.md`` on the ``docs/functional-spec``
+branch - that's the next step, not this one), but built ready for it.
 """
 
 import asyncio
