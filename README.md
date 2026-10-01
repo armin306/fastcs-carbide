@@ -15,9 +15,11 @@ What            | Where
 Source          | <https://github.com/armin306/fastcs-carbide>
 Docker          | `docker run ghcr.io/armin306/fastcs-carbide:latest`
 Releases        | <https://github.com/armin306/fastcs-carbide/releases>
+PVs             | [`docs/PV_LIST.md`](docs/PV_LIST.md)
 
 Talks to the CARBIDE Supervisor REST API over HTTP and exposes it as an
-EPICS IOC (via [FastCS](https://github.com/DiamondLightSource/FastCS)),
+EPICS IOC (via [FastCS](https://diamondlightsource.github.io/fastcs/main/index.html),
+see also its [GitHub repo](https://github.com/DiamondLightSource/FastCS)),
 with an [ophyd-async](https://github.com/bluesky/ophyd-async) device and
 Bluesky plan stubs on top for eventual use from `dodal`/`mx-bluesky` - not
 yet wired into either; see
